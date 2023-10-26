@@ -44,8 +44,8 @@ const pikachu = {
         "Quick Attack", "Volt Tackle", "Iron Tail", "Thunderbolt"
     ],
 }
-const mergePokemons = {...pokemon,...pikachu}
-console.log (mergePokemons)
+const {type:tipo, ability:habilidad, stats:estadisticas, moves:movimientos} = pokemon
+console.log({nombre, tipo, habilidad, estadisticas, movimientos, ...pikachu})
 
 function sumAllNumbers(...nums){
     const arrNums = [...nums]
@@ -80,3 +80,26 @@ const HIGH_TEMPERATURES = {
     today: 35,
     tomorrow: 32,
 };
+const {today:maximaHoy,tomorrow:maximaManana} = HIGH_TEMPERATURES
+console.log(maximaHoy)
+console.log(maximaManana)
+
+function onlyUniques(...args) {
+    const arrArgs = [...args]
+    let newArr = []
+    arrArgs.forEach((e)=>{
+        if(!newArr.includes(e)){
+            newArr.push(e)
+        }
+    })
+    console.log(newArr)
+}
+onlyUniques('gato', 'pollo', 'cerdo', 'cerdo')
+onlyUniques(1, 1, 2, 2, 3, 6, 7, 8)
+
+function combineAllArrays(...arr) {
+    console.log([].concat(...arr))
+
+}
+combineAllArrays([3, 6, 7, 8],[2, 7, 3, 1])
+combineAllArrays([2, 7, 3, 1],[2, 7, 4, 12],[2, 44, 22, 7, 3, 1])
