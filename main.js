@@ -44,31 +44,30 @@ const pikachu = {
         "Quick Attack", "Volt Tackle", "Iron Tail", "Thunderbolt"
     ],
 }
-const {type:tipo, ability:habilidad, stats:estadisticas, moves:movimientos} = pokemon
-console.log({nombre, tipo, habilidad, estadisticas, movimientos, ...pikachu})
+const {type:tipo, ability:habilidad, stats:estadisticas, moves:movimientos} = pokemon //modificamos los nombres de propiedades de pokemon para que al mergear no se sobreescriban con pikachu
+console.log({nombre, tipo, habilidad, estadisticas, movimientos, ...pikachu}) //añadimos las propiedades de pokemon modificadas y pikachu con el operador rest
+console.log({...pokemon, ...pikachu}) //si queremos mergear simplemente los dos objetos 'tal cual' hacemos con el operador spread, pikachu sobreescribe a pokemon
 
 function sumAllNumbers(...nums){
-    const arrNums = [...nums]
-    console.log(arrNums.reduce((accumulator, currentValue) => accumulator + currentValue))
+    console.log([...nums].reduce((accumulator, currentValue) => accumulator + currentValue))
 }
 sumAllNumbers(6, 8, 2, 3, 1)
 sumAllNumbers(11, 3, 12)
 
 function addOnlyNums(...args){
-    const arrArgs = [...args]
     let sum = 0
-    for(let i = 0; i < arrArgs.length; i++){
-        if(typeof arrArgs[i] === 'number'){
-            sum += arrArgs[i]
+    const arrNums = [...args]
+    arrNums.forEach((e) => {
+        if(typeof e === 'number'){
+            sum += e
         }
-    }
+    })
     console.log(sum)  
 }
 addOnlyNums(1, 'perro', 2, 4)
 
 function countTheArgs(...theArgs){
-    const arrTheArgs = [...theArgs]
-    console.log(arrTheArgs.length)
+    console.log([...theArgs].length)
 }
 countTheArgs('gato', 'perro')
 countTheArgs('gato', 'perro', 'pollo', 'oso')
